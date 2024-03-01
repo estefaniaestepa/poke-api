@@ -78,8 +78,14 @@ function filterPokemon(type) {
 }
 // Desplegable de Luchadores
 function pokeVsPoke() {
+  const divContainerBatalla = document.createElement('div');
+  const containerBatalla = document.querySelector('.container');
   const selectPoke1 = document.getElementById("dropdown1"); //dropdown menú desplegable
   const selectPoke2 = document.getElementById("dropdown2");
+  /*  containerBatalla.innerHTML = "Batallas <br>" + containerBatalla.innerHTML; */ //le ponemos el texto y le añadimos lo que ya tenia 
+  divContainerBatalla.innerText = "Batallas";
+  containerBatalla.insertAdjacentElement("afterbegin", divContainerBatalla); //inserta un elemento dentro del container de batalla en el inicio
+  /*  containerBatalla.appendChild(divContainerBatalla); */
 
   for (const poke of mapArray) {
     const option1 = document.createElement("option");
@@ -128,6 +134,9 @@ function pokemonBattle() {
     <p class="result">${randomWinner.nombre} ha ganado la batalla!</p>
     `;
   }, 100); // Retraso de 100 milisegundos (ajusta este valor según sea necesario)
+
+  document.getElementById("dropdown1").selectedIndex = 0; //cuando seleccionamos un elemento, empieza por indice que empieza desde 0 , de este modo selecciona la primera opción
+  document.getElementById("dropdown2").selectedIndex = 0;
 }
 
 const buttonresult = document.querySelector("#resultBtn");
